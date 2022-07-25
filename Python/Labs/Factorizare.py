@@ -3,6 +3,7 @@ N = 23456789876
 f = 2
 notFirst = False
 print(f"{N} = ", end="")
+# iterate through each factor
 while f * f <= N:
     p = 0
     while N % f == 0:
