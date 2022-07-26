@@ -16,7 +16,7 @@ if not os.path.isfile(inFilePath):
 # Initialize a string variable to hold the output of the game
 # then read the input file line by line and word by word
 outputText = ''
-inputText = open(inFilePath)
+inputText = open(inFilePath).readlines()
 for line in inputText:
     words = line.split()
     for word in words:
@@ -41,5 +41,6 @@ print(outputText)
 outFilePath = (inFilePath + "_final") if (inFilePath.rfind(".", ) == -1) else (inFilePath.replace(".", "_final."))
 with open(outFilePath, "w") as outFile:
     outFile.write(outputText)
+    outFile.close()
 
 

@@ -34,6 +34,7 @@ public class CmdLoop {
             line = input.nextLine();
         }
 
+        input.close();
         System.out.println("Goodbye!");
     }
 }
