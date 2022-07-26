@@ -42,3 +42,7 @@ print("def" in myDict.keys())
 if "xyz" in myDict.keys():
     print(myDict.pop("xyz"))
 print(myDict)
+myDict[3] = "def"
+print(myDict)
+myDict["list"] = ["one", "two", 3]
+print(myDict)
