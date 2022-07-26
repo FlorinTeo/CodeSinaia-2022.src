@@ -6,8 +6,7 @@ import CmdProcessor as cp
 
 if __name__ == "__main__":
     print("This is Wordle helper!")
-    #cmdProcessor = cp.CmdProcessor()
-    cmdProcessor = None
+    cmdProcessor = cp.CmdProcessor()
     line = input("Command?> ").lower()
     while(line != "quit" and line != "exit"):
         if line == "?" or line == "help":
