@@ -1,13 +1,9 @@
 class CmdProcessor:
-    semnatura = "x"
 
     def processHelp(self):
-        self.semnatura = "help"
         print("process command 'help'")
-        self.processAdd()
 
     def processAdd(self, args = None):
-        self.semnatura = "add"
         print("Process command 'add'")
 
     def processMatch(self, args = None):
