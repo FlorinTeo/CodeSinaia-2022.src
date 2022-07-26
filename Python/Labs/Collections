@@ -1,0 +1,44 @@
+# # Arrays
+# myArray = []
+# myArray.append("abc")
+# myArray.append(3)
+# print(myArray)
+# myArray += ["def", 3, "abc"]
+# print(myArray)
+# print(myArray[2])
+# print(len(myArray))
+# print(myArray.pop(2))
+# print(myArray)
+# print(myArray.remove("abc"))
+# print(myArray)
+
+# Sets
+# mySet = set()
+# mySet.add("abc")
+# mySet.add("xyz")
+# mySet.add("abc")
+# print(len(mySet))
+# print(mySet)
+# mySet2 = mySet.union({"xyz", "lmn", "pqr"})
+# print(mySet2)
+# print(mySet)
+# print(mySet2.difference(mySet))
+# if "xyz" in mySet:
+#     mySet.remove("xyz")
+# print(mySet)
+# mySet.remove("xyz")
+# print(mySet)
+
+# Dictionaries/Maps
+myDict = {"abc":2, "xyz":1}
+print(myDict)
+myDict["def"] = 5
+print(myDict)
+print(myDict["xyz"])
+
+print(myDict.keys())
+print("def" in myDict.keys())
+
+if "xyz" in myDict.keys():
+    print(myDict.pop("xyz"))
+print(myDict)
