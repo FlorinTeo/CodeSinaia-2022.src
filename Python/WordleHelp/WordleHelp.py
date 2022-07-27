@@ -27,5 +27,3 @@ if __name__ == "__main__":
             print("#Error: Command not recognized")
         line = input("Command?> ").lower()
     print("Goodbye!")
-
-
