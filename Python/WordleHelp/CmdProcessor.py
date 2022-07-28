@@ -33,23 +33,23 @@ class CmdProcessor:
         count = 0
         for line in lines:
             record = line.split()
-            self._wordsDb[record[0]] = int(record[1])
+            self._wordsDb[record[0].lower()] = int(record[1])
             count += 1
         print(f"Added {count} words to the database!")
 
     def processMatch(self, args = None):
         arr = args.split()
-        if len(arr) == 1:
-            count = 5
-            for word in self._wordsDb.keys():
+        hasHint = len(arr) > 1
+        if hasHint:
+            self._wordChecker.update(arr[1])
+
+        count = 5
+        for word in self._wordsDb.keys():
+            if not hasHint or self._wordChecker.check(word):
                 print(word)
                 count -= 1
                 if count == 0:
                     break
-        else:
-            hint = arr[1]
-            self._wordChecker.update(hint)
-
         '''
         if hint string exists
             self._wordChecker.update(hint)

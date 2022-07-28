@@ -55,7 +55,12 @@ class WordChecker:
      ###
      # Checks whether a given word matches all known hints
     def check(self, word):
-        print(f"TODO: WordChecker testing if '{word}' verifies all known hints.")
+        for i in range(0, len(word)):
+            c = word[i]
+            if c in self._gray:
+                return False
+            if self._green[i] and self._green[i] != c:
+                return False
         return True
         
     ###
