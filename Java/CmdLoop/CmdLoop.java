@@ -1,4 +1,4 @@
-package Java.CmdLoop;
+package CmdLoop;
 
 import java.util.Scanner;
 
