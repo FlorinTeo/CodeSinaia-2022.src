@@ -61,19 +61,25 @@ class WordChecker:
                 return False
             if self._green[i] and self._green[i] != c:
                 return False
+            if c in self._yellow and self._yellow[c][i]:
+                return False
+
+        for y in self._yellow.keys():
+            if y not in word:
+                return False
         return True
         
     ###
     # Returns a string representation of the entire object
     def __str__(self):
+        output = ''
         for hint in self._allHints:
-            print(hint)
-
+            output += hint + "\n"
+        return output
 ###
 # WordChecker test code
 if __name__ == "__main__":
     # creates a test WordChecker object and run through its methods
     wordChecker = WordChecker()
-    wordChecker.update("SOR~ES")
-    wordChecker.update("T~EEN+E")
-    print(wordChecker)
+    wordChecker.update("START", dict)
+    wordChecker.update("KN~E~LL", dict)
