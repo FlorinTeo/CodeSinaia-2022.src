@@ -38,14 +38,14 @@ class CmdProcessor:
         print(f"Added {count} words to the database!")
 
     def processMatch(self, args = None):
-        print("Process command 'match'")
-        self._wordChecker.update(args)
-
+        hint = args.split()[1]
         '''
+        if hint string exists
+            self._wordChecker.update(hint)
+
         for each word in database:
             if self._wordChecker.check(word):
                 print(word)
-        
         '''
     
     def processReset(self, args = None):
