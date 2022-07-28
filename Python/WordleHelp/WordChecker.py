@@ -1,6 +1,9 @@
 ###
 # Class owning the set of hints given in the course
 # of playing one game of Wordle
+from re import L
+
+
 class WordChecker:
     ###
     # Class fields
@@ -27,22 +30,27 @@ class WordChecker:
     ###
     # Updates the internal state of the checker with a new hint
     def update(self, hint):
-        '''
-        keep track of lastMarker (one of '+' or '~'). Initially None
-        for each character in hint
-            if character is a marker
-               save it in lastMarker and continue
-            otherwise we have a valid character ch
-            if lastMarker is None
-               add ch to the _gray set, if it was not previously either green or yellow
-            otherwise, if lastMarker is '+'
-               add ch to the green set
-            otherwise if lastMarker is '~'
-               add ch to the yellow set if not already in there
-               and set its position in the map to True
-            set lastMarker to None (since this was a character, not a marker)
-        add the hint to _allHints 
-        '''
+        #hint looks like "~ST+AIR"
+        lastMarker = None
+        iChar = 0
+        for c in hint:
+            if c == '+' or c == '~':
+                lastMarker = c
+                continue
+            if lastMarker == None:
+                if c not in self._green and c not in self._yellow.keys():
+                    self._gray.add(c)
+            elif lastMarker == '+':
+                self._green[iChar] = c
+                self._gray.discard(c)
+            elif lastMarker == '~':
+                if c not in self._yellow.keys():
+                    self._yellow[c] = [False, False, False, False, False]
+                self._yellow[c][iChar] = True
+                self._gray.discard(c)
+            iChar += 1
+            lastMarker = None
+        self._allHints.append(hint)
 
      ###
      # Checks whether a given word matches all known hints
@@ -61,6 +69,6 @@ class WordChecker:
 if __name__ == "__main__":
     # creates a test WordChecker object and run through its methods
     wordChecker = WordChecker()
-    wordChecker.update("~S+TAIR")
-    print(wordChecker.check("TOLLS"))
+    wordChecker.update("SOR~ES")
+    wordChecker.update("T~EEN+E")
     print(wordChecker)

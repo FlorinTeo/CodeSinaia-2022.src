@@ -38,7 +38,18 @@ class CmdProcessor:
         print(f"Added {count} words to the database!")
 
     def processMatch(self, args = None):
-        hint = args.split()[1]
+        arr = args.split()
+        if len(arr) == 1:
+            count = 5
+            for word in self._wordsDb.keys():
+                print(word)
+                count -= 1
+                if count == 0:
+                    break
+        else:
+            hint = arr[1]
+            self._wordChecker.update(hint)
+
         '''
         if hint string exists
             self._wordChecker.update(hint)
@@ -61,4 +72,7 @@ class CmdProcessor:
 # CmdProcessor test code
 if __name__ == "__main__":
     cmdP = CmdProcessor()
-    cmdP.processHelp()
+    cmdP.processAdd("add Python\\WordleHelp\\words.txt")
+    cmdP.processMatch("match")
+    cmdP.processMatch("match TERM~S")
+    cmdP.processMatch("match ~ST+AIR")
