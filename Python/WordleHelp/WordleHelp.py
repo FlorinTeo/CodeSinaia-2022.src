@@ -3,7 +3,6 @@
 # Implements the command loop and uses a CmdProcessor
 # object to process each of the supported commands
 import CmdProcessor as cp
-dict = {}
 
 if __name__ == "__main__":
     print("This is Wordle helper!")
@@ -13,14 +12,11 @@ if __name__ == "__main__":
         if line == "?" or line == "help":
             cmdProcessor.processHelp()
         elif line.startswith("add"):
-            dict = cmdProcessor.processAdd(line,dict)
+            cmdProcessor.processAdd(line)
         elif line.startswith("print"):
-            print('\033[96m')
-            for key, value in dict.items():
-                print("Word: ",key,"Appearence: ",value)
-            print("\x1b[0m")
+            cmdProcessor.processPrint(line)
         elif line.startswith("match"):
-            cmdProcessor.processMatch(line,dict)
+            cmdProcessor.processMatch(line)
         elif line.startswith("reset"):
             cmdProcessor.processReset(line)
         elif line.startswith("stats"):
