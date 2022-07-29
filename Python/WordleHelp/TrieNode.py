@@ -7,7 +7,7 @@ class TrieNode:
     # _children: links to the child nodes keyed by their charater
 
     def __init__(self, char = ""):
-        self._char = char
+        self._char = char;
         self._counter = 0
         self._children = {}
 
@@ -19,7 +19,7 @@ class TrieNode:
         nextWord = word[1:]
         if nextChar not in self._children:
             self._children[nextChar] = TrieNode(nextChar)
-        self._children[nextChar].addWord(nextWord, frequency)
+        self._children[nextChar].addWord(nextWord, frequency);
 
     def printTree(self, prefix = ""):
         print(f"{prefix}{self._char} : {self._counter}")
@@ -27,15 +27,21 @@ class TrieNode:
             self._children[child].printTree(f"{prefix}{self._char}")
 
     def traceWord(self, word, pos = 0):
-        pass
+        print(f"{word[:pos]}: {self._counter}")
+        if pos == len(word):
+            return
+        if word[pos] in self._children:
+            self._children[word[pos]].traceWord(word, pos+1)
+        else :
+            print (f"{word} : 0")
 
 if __name__ == "__main__":
     root = TrieNode()
     root.addWord("CARDS", 2)
     root.addWord("CHAOS")
-    root.addWord("CHARM")
+    root.addWord("CHARM");
     root.addWord("CARES")
     root.addWord("CHESS")
-    root.printTree()
+   # root.printTree()
     root.traceWord("CARES")
     root.traceWord("CAMEO")
