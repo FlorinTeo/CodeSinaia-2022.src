@@ -26,7 +26,7 @@ class TrieNode:
         for child in self._children.keys():
             self._children[child].printTree(f"{prefix}{self._char}")
 
-    def traceWord(self, word):
+    def traceWord(self, word, pos = 0):
         pass
 
 if __name__ == "__main__":
@@ -38,3 +38,4 @@ if __name__ == "__main__":
     root.addWord("CHESS")
     root.printTree()
     root.traceWord("CARES")
+    root.traceWord("CAMEO")
